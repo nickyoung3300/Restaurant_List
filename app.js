@@ -32,6 +32,13 @@ console.log(restaurantShow.name)
 res.render('show',{restaurant_show:restaurantShow})
 })
 
+app.get('/search',(req,res)=>{
+
+    const restaurantSearch = restaurantList.results.filter(item => item.name.toLowerCase().includes(req.query.keyword.toLowerCase()))
+    console.log(restaurantSearch)
+    res.render('index',{restaurantList_index:restaurantSearch})
+})
+
 app.listen(port,()=>{
 console.log('server')
 })
